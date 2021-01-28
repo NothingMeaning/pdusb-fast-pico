@@ -1,0 +1,46 @@
+########################################
+#
+########################################
+name: Sync raspberry pico repos to gitee
+
+on:
+  # push推送时触发
+  #push:
+  # 定时任务触发
+  schedule:
+    # 每天北京时间9点跑
+    # Runs at 05 12 18 Everyday
+    - cron:  '0 5,12,18 * * *'
+
+jobs:
+  git-mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure Private Key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEESYNC }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "StrictHostKeyChecking no" >> ~/.ssh/config
+      - name: Sync tinyusb
+        env:
+          SOURCE_REPO: 'https://github.com/raspberrypi/tinyusb.git'
+          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-pico-tinyusb.git'
+        run: |
+          git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
+          git remote set-url --push origin "$DESTINATION_REPO"
+          git fetch -p origin
+          git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+          git push --mirror
+      - name: Sync pico-playground
+        env:
+          SOURCE_REPO: 'https://github.com/raspberrypi/pico-playground.git'
+          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-pico-playground.git'
+        run: |
+          git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
+          git remote set-url --push origin "$DESTINATION_REPO"
+          git fetch -p origin
+          git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+          git push --mirror
