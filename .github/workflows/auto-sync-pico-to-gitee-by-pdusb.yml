@@ -15,6 +15,7 @@ on:
 
 jobs:
   git-mirror:
+    name: Mirror all repos
     runs-on: ubuntu-latest
     steps:
       - name: Configure Private Key
