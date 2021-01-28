@@ -80,7 +80,7 @@ jobs:
       - name: Sync pico picoprobe
         env:
           SOURCE_REPO: 'https://github.com/raspberrypi/picoprobe.git'
-          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-pico-picoprobe.git'
+          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-picoprobe.git'
         run: |
           git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
           git remote set-url --push origin "$DESTINATION_REPO"
@@ -91,7 +91,7 @@ jobs:
       - name: Sync pico picotool
         env:
           SOURCE_REPO: 'https://github.com/raspberrypi/picotool.git'
-          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-pico-picotool.git'
+          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-picotool.git'
         run: |
           git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
           git remote set-url --push origin "$DESTINATION_REPO"
@@ -102,7 +102,7 @@ jobs:
       - name: Sync pico openocd
         env:
           SOURCE_REPO: 'https://github.com/raspberrypi/openocd.git'
-          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-pico-openocd.git'
+          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-openocd.git'
         run: |
           git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
           git remote set-url --push origin "$DESTINATION_REPO"
