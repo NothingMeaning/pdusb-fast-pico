@@ -4,6 +4,7 @@
 name: Auto Sync raspberry pico repos to gitee
 
 on:
+  workflow_dispatch:
   # push推送时触发
   #push:
   # 定时任务触发
