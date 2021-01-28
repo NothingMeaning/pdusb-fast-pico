@@ -36,10 +36,73 @@ jobs:
           git fetch -p origin
           git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
           git push --mirror
+      - name: Sync pico-sdk
+        env:
+          SOURCE_REPO: 'https://github.com/raspberrypi/pico-sdk.git'
+          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-pico-sdk.git'
+        run: |
+          git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
+          git remote set-url --push origin "$DESTINATION_REPO"
+          git fetch -p origin
+          git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+          git push --mirror
+      - name: Sync pico-examples
+        env:
+          SOURCE_REPO: 'https://github.com/raspberrypi/pico-examples.git'
+          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-pico-examples.git'
+        run: |
+          git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
+          git remote set-url --push origin "$DESTINATION_REPO"
+          git fetch -p origin
+          git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+          git push --mirror
+      - name: Sync pico-extras
+        env:
+          SOURCE_REPO: 'https://github.com/raspberrypi/pico-extras.git'
+          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-pico-extras.git'
+        run: |
+          git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
+          git remote set-url --push origin "$DESTINATION_REPO"
+          git fetch -p origin
+          git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+          git push --mirror
       - name: Sync pico-playground
         env:
           SOURCE_REPO: 'https://github.com/raspberrypi/pico-playground.git'
           DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-pico-playground.git'
+        run: |
+          git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
+          git remote set-url --push origin "$DESTINATION_REPO"
+          git fetch -p origin
+          git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+          git push --mirror
+
+      - name: Sync pico picoprobe
+        env:
+          SOURCE_REPO: 'https://github.com/raspberrypi/picoprobe.git'
+          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-pico-picoprobe.git'
+        run: |
+          git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
+          git remote set-url --push origin "$DESTINATION_REPO"
+          git fetch -p origin
+          git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+          git push --mirror
+
+      - name: Sync pico picotool
+        env:
+          SOURCE_REPO: 'https://github.com/raspberrypi/picotool.git'
+          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-pico-picotool.git'
+        run: |
+          git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
+          git remote set-url --push origin "$DESTINATION_REPO"
+          git fetch -p origin
+          git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+          git push --mirror
+
+      - name: Sync pico openocd
+        env:
+          SOURCE_REPO: 'https://github.com/raspberrypi/openocd.git'
+          DESTINATION_REPO: 'git@gitee.com:pdusb/pdusb-fast-pico-openocd.git'
         run: |
           git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
           git remote set-url --push origin "$DESTINATION_REPO"
