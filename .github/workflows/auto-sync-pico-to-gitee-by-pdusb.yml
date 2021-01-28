@@ -1,7 +1,7 @@
 ########################################
 #
 ########################################
-name: Sync raspberry pico repos to gitee
+name: Auto Sync raspberry pico repos to gitee
 
 on:
   # push推送时触发
