@@ -26,8 +26,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run setup scripts
-        with:
-          working-directory: ./daily-build
+        working-directory: ./daily-build
         run: |
           pwd >logs.txt
           date >>logs.txt
