@@ -28,7 +28,12 @@ jobs:
       - name: Run setup scripts
         working-directory: ${{ github.workspace }}
         run: |
-          ls -la
+          cd ..
+          cp pdusb-fast-pico/pdusb-pico-setup.sh .
+          chmod +x ./pdusb-pico-setup.sh
+          mkdir output
+          mkdir release
+          ./pdusb-pico-setup.sh
 
       # Runs a set of commands using the runners shell
       - name: Setup tmate session
