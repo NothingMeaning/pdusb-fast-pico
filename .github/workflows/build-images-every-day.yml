@@ -28,8 +28,7 @@ jobs:
       - name: Run setup scripts
         working-directory: ./daily-build
         run: |
-          pwd
-          ls
+          ls -la
 
       # Runs a set of commands using the runners shell
       - name: Setup tmate session
