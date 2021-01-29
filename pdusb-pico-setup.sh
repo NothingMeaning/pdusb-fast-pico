@@ -35,9 +35,9 @@ SKIP_UART=1
 USE_GITEE=1
 DO_BUILD=0
 
-while getopts 'xdgo' OPTION; do
+while getopts 'xbgo' OPTION; do
   case "$OPTION" in
-    d)
+    b)
       DO_BUILD=1
       ;;
     g)
