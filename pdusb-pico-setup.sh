@@ -5,6 +5,7 @@ usage()
   echo "\t -x   Debug output each command "
   echo "\t -g   Use github instead of gitee. Gitee used by default "
   echo "\t -b   Build the example output. Only clone repo by default"
+  echo "\t -o   Disable Build openocd too."
 }
 
 # Exit on error
@@ -34,7 +35,7 @@ SKIP_UART=1
 USE_GITEE=1
 DO_BUILD=0
 
-while getopts 'xdg' OPTION; do
+while getopts 'xdgo' OPTION; do
   case "$OPTION" in
     d)
       DO_BUILD=1
@@ -42,6 +43,9 @@ while getopts 'xdg' OPTION; do
     g)
       USE_GITEE=0
       ;;
+    o)
+	    SKIP_OPENOCD=1
+	    ;;
     x)
       set -x
       ;;
