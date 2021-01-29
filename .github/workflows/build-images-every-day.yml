@@ -28,11 +28,8 @@ jobs:
       - name: Run setup scripts
         working-directory: ./daily-build
         run: |
-          pwd >logs.txt
+          pwd > logs.txt
           date >>logs.txt
-          # chmod +x pdusb-fast-pico/pdusb-pico-setup.sh
-          # cp pdusb-fast-pico/pdusb-pico-setup.sh .
-          # ./pdusb-pico-setup.sh -gb
 
       # Runs a set of commands using the runners shell
       - name: Setup tmate session
